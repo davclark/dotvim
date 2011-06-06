@@ -1,7 +1,17 @@
-" I think this was just for windows...
+" This was just for windows...
 " For some reason... the removal of the <C-V> seems to have permanently happened
 " The original map is in vim72/mswin.vim
 " lmap <C-V> :normal "+gP
+
+" Pathogen needs to be set up before syntax is set on
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
+
+" SimpleNote credentials for simplenote.vim
+let g:SimpleNoteUserName = "davclark@gmail.com"
+" Obviously, this is highly incompatible with a public gihub approach...
+" let g:SimpleNotePassword = "XXXXX" 
+
 
 " Show me some of what you know!
 syntax on
