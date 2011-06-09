@@ -1,0 +1,8 @@
+This is the beginning of a start-again-from-scratch .vim directory for me to use
+more easily across my various machines. One more step towards independence of
+any particular machine! It also allows for easy sharing of my vim config with
+others.
+
+To learn about the way I'm using pathogen and git submodules, check this link:
+
+http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
