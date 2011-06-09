@@ -7,12 +7,6 @@
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
-" SimpleNote credentials for simplenote.vim
-let g:SimpleNoteUserName = "davclark@gmail.com"
-" Obviously, this is highly incompatible with a public gihub approach...
-" let g:SimpleNotePassword = "XXXXX" 
-
-
 " Show me some of what you know!
 syntax on
 set ruler
