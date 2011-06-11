@@ -1,7 +1,10 @@
-This is the beginning of a start-again-from-scratch .vim directory for me to use
-more easily across my various machines. One more step towards independence of
-any particular machine! It also allows for easy sharing of my vim config with
-others.
+This a start-again-from-scratch .vim directory for me to use more easily across
+my various machines. One more step towards independence of any particular
+machine! It also allows for easy sharing of my vim config with others. To
+fascilitate easy sharing (including with myself), you can find it on github
+here (though you probably already knew this):
+
+https://github.com/davclark/dotvim
 
 To learn about the way I'm using pathogen and git submodules, check this link:
 
