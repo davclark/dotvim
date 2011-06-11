@@ -16,3 +16,6 @@
 [submodule "bundle/pyflakes-vim"]
 	path = bundle/pyflakes-vim
 	url = git://github.com/kevinw/pyflakes-vim.git
+[submodule "bundle/rope-vim"]
+	path = bundle/rope-vim
+	url = git@github.com:davclark/rope-vim.git
