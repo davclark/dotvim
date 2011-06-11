@@ -31,6 +31,7 @@ set tw=80
 
 " Let vim pick my indentation strategy
 filetype indent on
+filetype plugin on
 "set autoindent
 "set smartindent
 "set copyindent

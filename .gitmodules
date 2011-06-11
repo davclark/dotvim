@@ -4,3 +4,6 @@
 [submodule "bundle/simplenote"]
 	path = bundle/simplenote
 	url = git://github.com/humblehacker/simplenote.vim.git
+[submodule "bundle/Vim-R-plugin"]
+	path = bundle/Vim-R-plugin
+	url = git://github.com/vim-scripts/Vim-R-plugin.git
