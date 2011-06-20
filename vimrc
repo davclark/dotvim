@@ -20,8 +20,11 @@ set smarttab
 " But not good for makefiles!
 autocmd FileType make setlocal noexpandtab
 
-" I pretty much am using LaTeX if a file ends in .tex
+" I am generally using LaTeX if a file ends in .tex
 let g:tex_flavor='latex'
+
+" Because microsoft is dumb, they still put \r at the end of text files
+set fileformats=unix,dos,mac
 
 " Always allow backspae
 set bs=2
