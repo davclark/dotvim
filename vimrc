@@ -22,6 +22,7 @@ autocmd FileType make setlocal noexpandtab
 
 " I am generally using LaTeX if a file ends in .tex
 let g:tex_flavor='latex'
+let g:LatexBox_viewer='/Applications/Skim.app/Contents/MacOS/Skim'
 
 " Because microsoft is dumb, they still put \r at the end of text files
 set fileformats=unix,dos,mac
