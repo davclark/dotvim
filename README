@@ -6,9 +6,11 @@ here (though you probably already knew this):
 
     https://github.com/davclark/dotvim
 
+
 To learn about the way I'm using pathogen and git submodules, check this link:
 
     http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
+
 
 I got the following from tpope's pathogen docs - it's a good way to ignore stuff
 globally:
@@ -16,13 +18,19 @@ globally:
     git config --global core.excludesfile '~/.cvsignore'
     echo tags >> ~/.cvsignore
 
-I think I want to switch to Latex-Suite to get (fast) section folding, and the
-default usage of a distinct tex leader (which will allow easier non-conflict with
-R.vim in Rnw files). I guess I'll also revisit AUCTEX
 
 Currently, I just have the following line in after/ftplugin/rnoweb.vim
 
     runtime! ftplugin/tex_latexSuite.vim
+
+
+FUTURE DIRECTIONS
+
+I think I want to switch to Latex-Suite to get (fast) section folding, and the
+default usage of a distinct tex leader (which will allow easier non-conflict with
+R.vim in Rnw files). I guess I'll also revisit AUCTEX
+
+I'm also keen to try out snipMate (like TextMate snippets)
 
 I'm curious to know if syntax regions can actually change which functions
 are available. That'd be pretty sweet, but not a major problem if not.
