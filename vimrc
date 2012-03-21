@@ -3,9 +3,12 @@
 " The original map is in vim72/mswin.vim
 " lmap <C-V> :normal "+gP
 
+" Here we temporarily disable simplenote, because it's not working very well
+let g:pathogen_disabled = ['simplenote']
+
 " Pathogen needs to be set up before syntax is set on
 call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 " General Vim setup
 
