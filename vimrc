@@ -4,7 +4,7 @@
 " lmap <C-V> :normal "+gP
 
 " Here we temporarily disable simplenote, because it's not working very well
-let g:pathogen_disabled = ['simplenote']
+let g:pathogen_disabled = ['simplenote', 'vim-textobj-rubyblock', 'ruby-matchit']
 
 " Pathogen needs to be set up before syntax is set on
 " Just call :Helptags when you install a new file
@@ -20,8 +20,10 @@ filetype plugin indent on
 "set copyindent
 
 " Show me some of what you know!
-syntax on
 set ruler
+
+" Seems to be necessary for colors in terminal mode (not GUI)
+syntax on
 
 " Always allow backspae
 set bs=2

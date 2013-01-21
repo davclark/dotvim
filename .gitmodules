@@ -22,3 +22,18 @@
 [submodule "bundle/csv"]
 	path = bundle/csv
 	url = git://github.com/chrisbra/csv.vim.git
+[submodule "bundle/vim-rails"]
+	path = bundle/vim-rails
+	url = git://github.com/tpope/vim-rails.git
+[submodule "bundle/vim-ruby"]
+	path = bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "bundle/vim-endwise"]
+	path = bundle/vim-endwise
+	url = git://github.com/tpope/vim-endwise.git
+[submodule "bundle/ruby-matchit"]
+	path = bundle/ruby-matchit
+	url = git://github.com/vim-scripts/ruby-matchit.git
+[submodule "bundle/vim-textobj-rubyblock"]
+	path = bundle/vim-textobj-rubyblock
+	url = git://github.com/nelstrom/vim-textobj-rubyblock.git
