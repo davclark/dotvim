@@ -7,10 +7,17 @@
 let g:pathogen_disabled = ['simplenote']
 
 " Pathogen needs to be set up before syntax is set on
-call pathogen#helptags()
+" Just call :Helptags when you install a new file
+" call pathogen#helptags()
 call pathogen#infect()
 
 " General Vim setup
+
+" Let vim pick my indentation strategy, etc.
+filetype plugin indent on
+"set autoindent
+"set smartindent
+"set copyindent
 
 " Show me some of what you know!
 syntax on
@@ -22,12 +29,6 @@ set bs=2
 " This will wrap at 80 chars
 set tw=80
 
-" Let vim pick my indentation strategy
-filetype indent on
-filetype plugin on
-"set autoindent
-"set smartindent
-"set copyindent
 
 " Because microsoft is dumb, they still put \r at the end of text files
 set fileformats=unix,dos,mac
@@ -49,6 +50,10 @@ set smarttab
 
 " But we want real tabs for makefiles!
 autocmd FileType make setlocal noexpandtab
+
+" no text wrapping on csv files
+" au! BufNewFile,BufRead *.csv setf csv
+" autocmd FileType csv setlocal tw=0 
 
 " I am generally using LaTeX if a file ends in .tex
 " Currently, I use LatexBox, but I think it might not be my fave (doesn't handle

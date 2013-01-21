@@ -19,3 +19,6 @@
 [submodule "bundle/rope-vim"]
 	path = bundle/rope-vim
 	url = git@github.com:davclark/rope-vim.git
+[submodule "bundle/csv"]
+	path = bundle/csv
+	url = git://github.com/chrisbra/csv.vim.git
