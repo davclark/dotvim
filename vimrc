@@ -19,6 +19,10 @@ filetype plugin indent on
 "set smartindent
 "set copyindent
 
+" Strangely, while this is a standard part of Vim 6.0+, it is not enabled by
+" default. Makes e.g., Ruby block matching work
+runtime macros/matchit.vim
+
 " Show me some of what you know!
 set ruler
 
