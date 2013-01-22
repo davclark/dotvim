@@ -7,7 +7,7 @@
 " vim-textobj-rubyblock needs its dependencies installed, but I'm leaving it in
 " my git repo, and vim-ruby is already installed with Vim. So, I want to see if
 " ruby behaves well without the fresh download.
-let g:pathogen_disabled = ['simplenote', 'vim-textobj-rubyblock', 'vim-ruby']
+let g:pathogen_disabled = ['simplenote']
 
 " Pathogen needs to be set up before syntax is set on
 " Just call :Helptags when you install a new file
