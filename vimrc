@@ -3,8 +3,11 @@
 " The original map is in vim72/mswin.vim
 " lmap <C-V> :normal "+gP
 
-" Here we temporarily disable simplenote, because it's not working very well
-let g:pathogen_disabled = ['simplenote', 'vim-textobj-rubyblock', 'ruby-matchit']
+" Here we temporarily disable simplenote, because it's not working very well,
+" vim-textobj-rubyblock needs its dependencies installed, but I'm leaving it in
+" my git repo, and vim-ruby is already installed with Vim. So, I want to see if
+" ruby behaves well without the fresh download.
+let g:pathogen_disabled = ['simplenote', 'vim-textobj-rubyblock', 'vim-ruby']
 
 " Pathogen needs to be set up before syntax is set on
 " Just call :Helptags when you install a new file
@@ -20,7 +23,8 @@ filetype plugin indent on
 "set copyindent
 
 " Strangely, while this is a standard part of Vim 6.0+, it is not enabled by
-" default. Makes e.g., Ruby block matching work
+" default. Makes e.g., Ruby block matching work. It should be clearer that
+" ruby-matchit is NOT the right solution here
 runtime macros/matchit.vim
 
 " Show me some of what you know!
