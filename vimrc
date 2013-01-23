@@ -60,6 +60,9 @@ set smarttab
 
 " But we want real tabs for makefiles!
 autocmd FileType make setlocal noexpandtab
+" Markdown is not a single standard, and underscore matching drives me nuts
+" This is not actually turning syntax off, just changing the filetype for syntax
+autocmd FileType markdown ownsyntax off
 
 " no text wrapping on csv files
 " au! BufNewFile,BufRead *.csv setf csv
