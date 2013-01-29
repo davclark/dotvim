@@ -3,10 +3,7 @@
 " The original map is in vim72/mswin.vim
 " lmap <C-V> :normal "+gP
 
-" Here we temporarily disable simplenote, because it's not working very well,
-" vim-textobj-rubyblock needs its dependencies installed, but I'm leaving it in
-" my git repo, and vim-ruby is already installed with Vim. So, I want to see if
-" ruby behaves well without the fresh download.
+" Here we temporarily disable simplenote, because it's not working very well
 let g:pathogen_disabled = ['simplenote']
 
 " Pathogen needs to be set up before syntax is set on
@@ -32,6 +29,14 @@ set ruler
 
 " Seems to be necessary for colors in terminal mode (not GUI)
 syntax on
+" For OS X, be sure to install the matching terminal theme
+" https://github.com/tomislav/osx-lion-terminal.app-colors-solarized
+colorscheme solarized
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
 
 " Always allow backspae
 set bs=2
@@ -40,7 +45,8 @@ set bs=2
 set tw=80
 
 
-" Because microsoft is dumb, they still put \r at the end of text files
+" Because microsoft is dumb, they still put \r at the end of text files on a mac
+" So, despite it's otherwise dead-ness, we need mac
 set fileformats=unix,dos,mac
 
 " y, d, p and co. use the system clipboard by default
@@ -58,15 +64,30 @@ set sw=4
 set expandtab
 set smarttab
 
-" But we want real tabs for makefiles!
-autocmd FileType make setlocal noexpandtab
-" Markdown is not a single standard, and underscore matching drives me nuts
-" This is not actually turning syntax off, just changing the filetype for syntax
-autocmd FileType markdown ownsyntax off
+" Generally only useful when called from the autocmd below
+function! RestoreCursorPos()
+    if line("'\"") > 1 && line("'\"") <= line("$") 
+        exe "normal! g`\"" 
+    endif
+endfunction
 
-" no text wrapping on csv files
-" au! BufNewFile,BufRead *.csv setf csv
-" autocmd FileType csv setlocal tw=0 
+if !exists("autocommands_loaded")
+  let autocommands_loaded = 1
+  " We want real tabs for makefiles!
+  " Markdown is not a single standard, and underscore matching drives me nuts
+  " This is not actually turning syntax off, just changing the filetype for
+  " syntax
+  autocmd FileType markdown ownsyntax off
+  
+  " Restore previous position in file from .viminfo
+  au BufReadPost * call RestoreCursorPos()
+
+  " I'm now using the csv vim scripts
+  " no text wrapping on csv files
+  " au BufNewFile,BufRead *.csv setf csv
+  " autocmd FileType csv setlocal tw=0 
+endif
+
 
 " I am generally using LaTeX if a file ends in .tex
 " Currently, I use LatexBox, but I think it might not be my fave (doesn't handle
