@@ -29,8 +29,19 @@ set ruler
 
 " Seems to be necessary for colors in terminal mode (not GUI)
 syntax on
+
+"" solarized / color stuff
 " For OS X, be sure to install the matching terminal theme
 " https://github.com/tomislav/osx-lion-terminal.app-colors-solarized
+
+" I like space errors - this is available for most major languages
+" These don't however seem to do anything, currently using solarized_hitrail
+" And for python, pyflakes does a pretty good job
+let ruby_space_errors = 1
+let python_space_errors = 1
+
+" This needs to be set before `colorscheme solarized`
+let solarized_hitrail = 1
 colorscheme solarized
 if has('gui_running')
     set background=light
@@ -44,6 +55,12 @@ set bs=2
 " This will wrap at 80 chars
 set tw=80
 
+" Ideal for python, what else? rails mode overrides this (I think)
+set ts=4
+set sw=4
+set expandtab
+set smarttab
+
 
 " Because microsoft is dumb, they still put \r at the end of text files on a mac
 " So, despite it's otherwise dead-ness, we need mac
@@ -55,14 +72,6 @@ set fileformats=unix,dos,mac
 " If you end up caring about X11, you can set up a conditional and set to
 " unnamedplus instead
 set clipboard=unnamed
-
-" Setups that vary from filetype to filetype
-
-" Ideal for python, what else?
-set ts=4
-set sw=4
-set expandtab
-set smarttab
 
 " Generally only useful when called from the autocmd below
 function! RestoreCursorPos()
