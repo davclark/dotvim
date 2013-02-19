@@ -37,8 +37,8 @@ syntax on
 " I like space errors - this is available for most major languages
 " These don't however seem to do anything, currently using solarized_hitrail
 " And for python, pyflakes does a pretty good job
-let ruby_space_errors = 1
-let python_space_errors = 1
+" let ruby_space_errors = 1
+" let python_space_errors = 1
 
 " This needs to be set before `colorscheme solarized`
 let solarized_hitrail = 1
@@ -75,7 +75,8 @@ set clipboard=unnamed
 
 " Generally only useful when called from the autocmd below
 function! RestoreCursorPos()
-    if line("'\"") > 1 && line("'\"") <= line("$") 
+    if !(bufname("%") =~ '\(COMMIT_EDITMSG\)') && line("'\"") > 1 && 
+         \ line("'\"") <= line("$") 
         exe "normal! g`\"" 
     endif
 endfunction
@@ -87,7 +88,7 @@ if !exists("autocommands_loaded")
   " This is not actually turning syntax off, just changing the filetype for
   " syntax
   autocmd FileType markdown ownsyntax off
-  
+
   " Restore previous position in file from .viminfo
   au BufReadPost * call RestoreCursorPos()
 
@@ -103,3 +104,6 @@ endif
 " Sweave very well, for example).
 let g:tex_flavor='latex'
 let g:LatexBox_viewer='/Applications/Skim.app/Contents/MacOS/Skim'
+
+" rails mode uses this, maybe other things will as well
+command -bar -nargs=1 OpenURL :!open <args> 
