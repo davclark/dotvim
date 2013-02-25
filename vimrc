@@ -3,6 +3,14 @@
 " The original map is in vim72/mswin.vim
 " lmap <C-V> :normal "+gP
 
+"" TOC
+
+"" 1 - Enable Pathogen / import scripts
+"" 2 - Settings
+"" 3 - Macros, commands, and things
+
+"" 1 - Pathogen
+
 " Here we temporarily disable simplenote, because it's not working very well
 let g:pathogen_disabled = ['simplenote']
 
@@ -11,7 +19,7 @@ let g:pathogen_disabled = ['simplenote']
 " call pathogen#helptags()
 call pathogen#infect()
 
-" General Vim setup
+"" 2 - General Vim settings
 
 " Let vim pick my indentation strategy, etc.
 filetype plugin indent on
@@ -73,6 +81,21 @@ set fileformats=unix,dos,mac
 " unnamedplus instead
 set clipboard=unnamed
 
+" I am generally using LaTeX if a file ends in .tex
+" Currently, I use LatexBox, but I think it might not be my fave (doesn't handle
+" Sweave very well, for example).
+let g:tex_flavor='latex'
+let g:LatexBox_viewer='/Applications/Skim.app/Contents/MacOS/Skim'
+
+
+"" 3 - Macros, scripts, &c.
+
+" rails mode uses this, maybe other things will as well
+command -bar -nargs=1 OpenURL :!open <args> 
+
+" Elevate permission on write
+cmap w!! w !sudo tee % > /dev/null
+
 " Generally only useful when called from the autocmd below
 function! RestoreCursorPos()
     if !(bufname("%") =~ '\(COMMIT_EDITMSG\)') && line("'\"") > 1 && 
@@ -87,7 +110,9 @@ if !exists("autocommands_loaded")
   " Markdown is not a single standard, and underscore matching drives me nuts
   " This is not actually turning syntax off, just changing the filetype for
   " syntax
-  autocmd FileType markdown ownsyntax off
+  "" autocmd FileType markdown ownsyntax off
+  " I think this is a little more appropriate
+  au FileType markdown syntax clear
 
   " Restore previous position in file from .viminfo
   au BufReadPost * call RestoreCursorPos()
@@ -97,13 +122,3 @@ if !exists("autocommands_loaded")
   " au BufNewFile,BufRead *.csv setf csv
   " autocmd FileType csv setlocal tw=0 
 endif
-
-
-" I am generally using LaTeX if a file ends in .tex
-" Currently, I use LatexBox, but I think it might not be my fave (doesn't handle
-" Sweave very well, for example).
-let g:tex_flavor='latex'
-let g:LatexBox_viewer='/Applications/Skim.app/Contents/MacOS/Skim'
-
-" rails mode uses this, maybe other things will as well
-command -bar -nargs=1 OpenURL :!open <args> 
