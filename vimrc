@@ -6,8 +6,9 @@
 "" TOC
 
 "" 1 - Enable Pathogen / import scripts
-"" 2 - Settings
-"" 3 - Macros, commands, and things
+"" 2 - Vim Settings
+"" 3 - Configure scripts / packages
+"" 4 - Macros, commands, and things
 
 "" 1 - Pathogen
 
@@ -38,25 +39,6 @@ set ruler
 " Seems to be necessary for colors in terminal mode (not GUI)
 syntax on
 
-"" solarized / color stuff
-" For OS X, be sure to install the matching terminal theme
-" https://github.com/tomislav/osx-lion-terminal.app-colors-solarized
-
-" I like space errors - this is available for most major languages
-" These don't however seem to do anything, currently using solarized_hitrail
-" And for python, pyflakes does a pretty good job
-" let ruby_space_errors = 1
-" let python_space_errors = 1
-
-" This needs to be set before `colorscheme solarized`
-let solarized_hitrail = 1
-colorscheme solarized
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
-
 " Always allow backspae
 set bs=2
 
@@ -81,14 +63,56 @@ set fileformats=unix,dos,mac
 " unnamedplus instead
 set clipboard=unnamed
 
+" Search more cool, can also make case sensitive with \c (opposite of \i)
+set ignorecase
+set smartcase
+set incsearch
+
+
+" I also really don't like automatic code folding - just use zM if you want
+" I set this because of pymode
+set foldlevel=100
+
+"" 3 - Configure scripts / packages
+
+" Syntax / style checking is generally handled by Syntastic
+" Thus, disable from pymode
+let g:pymode_lint = 0
+
+" And these kinds of things should be done by hand (see help for inspiration,
+" though)
+let g:pymode_options = 0
+
+" I like marking space errors - this is available for most major languages
+" These don't however seem to do anything, currently using solarized_hitrail
+" And for python, pyflakes does a pretty good job
+" let ruby_space_errors = 1
+" let python_space_errors = 1
+
+"" solarized / color stuff
+" For OS X, be sure to install the matching terminal theme
+" https://github.com/tomislav/osx-lion-terminal.app-colors-solarized
+
+" This needs to be set before `colorscheme solarized`
+let solarized_hitrail = 1
+
+colorscheme solarized
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+
+
 " I am generally using LaTeX if a file ends in .tex
 " Currently, I use LatexBox, but I think it might not be my fave (doesn't handle
 " Sweave very well, for example).
 let g:tex_flavor='latex'
+" Doesn't work, I think because of a <leader> conflict
 let g:LatexBox_viewer='/Applications/Skim.app/Contents/MacOS/Skim'
 
 
-"" 3 - Macros, scripts, &c.
+"" 4 - Macros, scripts, &c.
 
 " rails mode uses this, maybe other things will as well
 command -bar -nargs=1 OpenURL :!open <args> 
