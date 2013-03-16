@@ -83,6 +83,9 @@ let g:pymode_lint = 0
 " though)
 let g:pymode_options = 0
 
+" And I'd rather use ipython
+let g:pymode_run = 0
+
 " I like marking space errors - this is available for most major languages
 " These don't however seem to do anything, currently using solarized_hitrail
 " And for python, pyflakes does a pretty good job
