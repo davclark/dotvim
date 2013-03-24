@@ -59,9 +59,11 @@ set fileformats=unix,dos,mac
 " y, d, p and co. use the system clipboard by default
 " on X11, this ends up being the "selection" buffer (i.e., selected with a
 " mouse) instead of the cut-buffer (i.e., selected with ctrl-x somewhere)
-" If you end up caring about X11, you can set up a conditional and set to
-" unnamedplus instead
-set clipboard=unnamed
+if has('unnamedplus')
+    set clipboard=unnamedplus
+else
+    set clipboard=unnamed
+endif
 
 " Search more cool, can also make case sensitive with \c (opposite of \i)
 set ignorecase
