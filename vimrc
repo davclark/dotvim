@@ -89,7 +89,7 @@ let g:pymode_options = 0
 let g:pymode_run = 0
 
 " And I'd rather not unintentionally create mixed diffs w/ whitespace removals
-let g:pymode_utils_whitespace = 0
+let g:pymode_utils_whitespaces = 0
 
 " This is supposedly "Highly Experimental" but really helpful (for me)
 let g:csv_autocmd_arrange = 1
