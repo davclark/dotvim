@@ -94,6 +94,9 @@ let g:pymode_utils_whitespaces = 0
 " This is supposedly "Highly Experimental" but really helpful (for me)
 let g:csv_autocmd_arrange = 1
 
+" Warning signs are annoying, can still check with :Error
+let g:syntastic_quiet_warnings=1
+
 " I like marking space errors - this is available for most major languages
 " These don't however seem to do anything, currently using solarized_hitrail
 " And for python, pyflakes does a pretty good job
