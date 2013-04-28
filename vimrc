@@ -78,6 +78,9 @@ set foldlevel=100
 " Open an existing tab if the buffer is already displayed somewhere
 set switchbuf=usetab
 
+" Mostly for NERDtree
+set splitright
+
 "" 3 - Configure scripts / packages
 
 " Syntax / style checking is generally handled by Syntastic
