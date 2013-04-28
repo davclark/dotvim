@@ -22,7 +22,7 @@ call pathogen#infect()
 
 "" 2 - General Vim settings
 
-" Let vim pick my indentation strategy, etc.
+" Let vim / plugins pick my indentation strategy, etc.
 filetype plugin indent on
 "set autoindent
 "set smartindent
@@ -74,6 +74,9 @@ set incsearch
 " I also really don't like automatic code folding - just use zM if you want
 " I set this because of pymode
 set foldlevel=100
+
+" Open an existing tab if the buffer is already displayed somewhere
+set switchbuf=usetab
 
 "" 3 - Configure scripts / packages
 
