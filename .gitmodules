@@ -67,3 +67,6 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/UniCycle"]
+	path = bundle/UniCycle
+	url = git://github.com/vim-scripts/UniCycle.git
