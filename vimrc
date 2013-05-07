@@ -83,6 +83,9 @@ set splitright
 
 "" 3 - Configure scripts / packages
 
+" Make this less typing
+command NT NERDTree
+
 " Syntax / style checking is generally handled by Syntastic
 " Thus, disable from pymode
 let g:pymode_lint = 0
