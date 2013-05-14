@@ -35,6 +35,8 @@ runtime macros/matchit.vim
 
 " Show me some of what you know!
 set ruler
+" Makes more info available under your buffer
+set cmdheight=2
 
 " Seems to be necessary for colors in terminal mode (not GUI)
 syntax on
@@ -105,6 +107,8 @@ let g:csv_autocmd_arrange = 1
 
 " Warning signs are annoying, can still check with :Error
 let g:syntastic_quiet_warnings=1
+
+let g:latexBox_Folding=1
 
 " I like marking space errors - this is available for most major languages
 " These don't however seem to do anything, currently using solarized_hitrail
