@@ -37,6 +37,8 @@ runtime macros/matchit.vim
 set ruler
 " Makes more info available under your buffer
 set cmdheight=2
+" Some vim users think this is unaesthetic, but I like it
+set laststatus=2
 
 " Seems to be necessary for colors in terminal mode (not GUI)
 syntax on
@@ -108,7 +110,6 @@ let g:csv_autocmd_arrange = 1
 " Warning signs are annoying, can still check with :Error
 let g:syntastic_quiet_warnings=1
 
-let g:latexBox_Folding=1
 
 " I like marking space errors - this is available for most major languages
 " These don't however seem to do anything, currently using solarized_hitrail
@@ -136,8 +137,12 @@ endif
 " Sweave very well, for example).
 let g:tex_flavor='latex'
 " Doesn't work, I think because of a <leader> conflict
-let g:LatexBox_viewer='/Applications/Skim.app/Contents/MacOS/Skim'
+let g:LatexBox_viewer='open -a skim'
 
+let g:LatexBox_Folding=1
+" Enable synctex?
+map <silent> <Leader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
+    \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>
 
 "" 4 - Macros, scripts, &c.
 
