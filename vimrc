@@ -177,4 +177,7 @@ if !exists("autocommands_loaded")
   " no text wrapping on csv files
   " au BufNewFile,BufRead *.csv setf csv
   " autocmd FileType csv setlocal tw=0 
+
+  " Get nice latex-box completion by default with supertab
+  au FileType tex call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 endif
