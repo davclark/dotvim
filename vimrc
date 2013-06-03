@@ -13,7 +13,10 @@
 "" 1 - Pathogen
 
 " Here we temporarily disable simplenote, because it's not working very well
-let g:pathogen_disabled = ['simplenote']
+" I'm switching for now to OS-based left and right quotes
+" endwise messes up umlaut-i for some reason
+" I simply haven't gotten 'round to configuring evervim
+let g:pathogen_disabled = ['simplenote', 'csv', 'UniCycle', 'evervim', 'vim-endwise']
 
 " Pathogen needs to be set up before syntax is set on
 " Just call :Helptags when you install a new file
@@ -22,11 +25,9 @@ call pathogen#infect()
 
 "" 2 - General Vim settings
 
-" Let vim / plugins pick my indentation strategy, etc.
+" Let vim / plugins pick my indentation strategy, etc. as opposed to using
+" autoindent, smartindent, copyindent...
 filetype plugin indent on
-"set autoindent
-"set smartindent
-"set copyindent
 
 " Strangely, while this is a standard part of Vim 6.0+, it is not enabled by
 " default. Makes e.g., Ruby block matching work. It should be clearer that
@@ -76,8 +77,9 @@ set incsearch
 
 
 " I also really don't like automatic code folding - just use zM if you want
+" But if a file is huge, I do like it
 " I set this because of pymode
-set foldlevel=100
+set foldlevel=5
 
 " Open an existing tab if the buffer is already displayed somewhere
 set switchbuf=usetab
@@ -179,5 +181,6 @@ if !exists("autocommands_loaded")
   " autocmd FileType csv setlocal tw=0 
 
   " Get nice latex-box completion by default with supertab
-  au FileType tex call SuperTabSetDefaultCompletionType("<c-x><c-o>")
+  " Commenting out for now - you lose too much other groovy stuff
+  " au FileType tex call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 endif
