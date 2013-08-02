@@ -16,7 +16,7 @@
 " I'm switching for now to OS-based left and right quotes
 " endwise messes up umlaut-i for some reason
 " I simply haven't gotten 'round to configuring evervim
-let g:pathogen_disabled = ['simplenote', 'csv', 'UniCycle', 'evervim', 'vim-endwise']
+let g:pathogen_disabled = ['simplenote', 'csv', 'UniCycle', 'evervim'] ", 'vim-endwise']
 
 " Pathogen needs to be set up before syntax is set on
 " Just call :Helptags when you install a new file
