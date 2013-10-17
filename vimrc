@@ -74,11 +74,12 @@ endif
 set ignorecase
 set smartcase
 set incsearch
+" Finally learned about :noh - which is good enough to turn stuff off
+set hlsearch
 
 
 " I also really don't like automatic code folding - just use zM if you want
 " But if a file is huge, I do like it
-" I set this because of pymode
 set foldlevel=5
 
 " Open an existing tab if the buffer is already displayed somewhere
@@ -86,6 +87,8 @@ set switchbuf=usetab
 
 " Mostly for NERDtree
 set splitright
+
+map Q gqap
 
 "" 3 - Configure scripts / packages
 
@@ -142,7 +145,7 @@ let g:tex_flavor='latex'
 let g:LatexBox_viewer='open -a skim'
 
 let g:LatexBox_Folding=1
-" Enable synctex?
+" Enable synctex in a mac-specific way
 map <silent> <Leader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
     \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>
 
@@ -168,7 +171,7 @@ if !exists("autocommands_loaded")
   " Markdown is not a single standard, and underscore matching drives me nuts
   " This is not actually turning syntax off, just changing the filetype for
   " syntax
-  "" autocmd FileType markdown ownsyntax off
+  " autocmd FileType markdown ownsyntax off
   " I think this is a little more appropriate
   au FileType markdown syntax clear
 
