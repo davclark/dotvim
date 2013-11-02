@@ -1,2 +1,2 @@
 set guioptions-=T
-set guifont=Monaco:h12
+set guifont=Source\ Code\ Pro\ Semibold:h13

@@ -16,7 +16,7 @@
 " I'm switching for now to OS-based left and right quotes
 " endwise messes up umlaut-i for some reason
 " I simply haven't gotten 'round to configuring evervim
-let g:pathogen_disabled = ['simplenote', 'csv', 'UniCycle', 'evervim'] ", 'vim-endwise']
+let g:pathogen_disabled = ['simplenote', 'csv', 'UniCycle', 'evervim']
 
 " Pathogen needs to be set up before syntax is set on
 " Just call :Helptags when you install a new file
@@ -38,7 +38,6 @@ set tw=80
 set ts=4
 set sw=4
 set expandtab
-set smarttab
 
 
 " y, d, p and co. use the system clipboard by default
@@ -54,7 +53,7 @@ endif
 set ignorecase
 set smartcase
 set incsearch
-" Finally learned about :noh - which is good enough to turn stuff off
+" Note - vim-sensible maps <C-L> to :noh - which turns hilights off
 set hlsearch
 
 
@@ -148,20 +147,12 @@ endfunction
 if !exists("autocommands_loaded")
   let autocommands_loaded = 1
   " We want real tabs for makefiles!
-  " Markdown is not a single standard, and underscore matching drives me nuts
-  " This is not actually turning syntax off, just changing the filetype for
-  " syntax
-  " autocmd FileType markdown ownsyntax off
-  " I think this is a little more appropriate
+  " XXX where is this?
+
   au FileType markdown syntax clear
 
   " Restore previous position in file from .viminfo
   au BufReadPost * call RestoreCursorPos()
-
-  " I'm now using the csv vim scripts
-  " no text wrapping on csv files
-  " au BufNewFile,BufRead *.csv setf csv
-  " autocmd FileType csv setlocal tw=0 
 
   " Get nice latex-box completion by default with supertab
   " Commenting out for now - you lose too much other groovy stuff
