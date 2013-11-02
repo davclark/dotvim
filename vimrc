@@ -25,24 +25,8 @@ call pathogen#infect()
 
 "" 2 - General Vim settings
 
-" Let vim / plugins pick my indentation strategy, etc. as opposed to using
-" autoindent, smartindent, copyindent...
-filetype plugin indent on
-
-" Strangely, while this is a standard part of Vim 6.0+, it is not enabled by
-" default. Makes e.g., Ruby block matching work. It should be clearer that
-" ruby-matchit is NOT the right solution here
-runtime macros/matchit.vim
-
-" Show me some of what you know!
-set ruler
 " Makes more info available under your buffer
 set cmdheight=2
-" Some vim users think this is unaesthetic, but I like it
-set laststatus=2
-
-" Seems to be necessary for colors in terminal mode (not GUI)
-syntax on
 
 " Always allow backspae
 set bs=2
@@ -56,10 +40,6 @@ set sw=4
 set expandtab
 set smarttab
 
-
-" Because microsoft is dumb, they still put \r at the end of text files on a mac
-" So, despite it's otherwise dead-ness, we need mac
-set fileformats=unix,dos,mac
 
 " y, d, p and co. use the system clipboard by default
 " on X11, this ends up being the "selection" buffer (i.e., selected with a
