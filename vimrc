@@ -67,7 +67,8 @@ set switchbuf=usetab
 " Mostly for NERDtree
 set splitright
 
-map Q gqap
+nmap Q gqap
+vmap Q gq
 
 "" 3 - Configure scripts / packages
 
