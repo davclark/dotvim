@@ -56,6 +56,8 @@ set incsearch
 " Note - vim-sensible maps <C-L> to :noh - which turns hilights off
 set hlsearch
 
+" listchars is set in vim-sensible
+set list
 
 " I also really don't like automatic code folding - just use zM if you want
 " But if a file is huge, I do like it
@@ -107,7 +109,7 @@ let g:syntastic_quiet_warnings=1
 " https://github.com/tomislav/osx-lion-terminal.app-colors-solarized
 
 " This needs to be set before `colorscheme solarized`
-let solarized_hitrail = 1
+" let solarized_hitrail = 1
 
 colorscheme solarized
 if has('gui_running')
