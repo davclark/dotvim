@@ -1,0 +1,2 @@
+syntax clear
+setlocal spell

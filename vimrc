@@ -152,8 +152,6 @@ if !exists("autocommands_loaded")
   " We want real tabs for makefiles!
   " XXX where is this?
 
-  au FileType markdown syntax clear
-
   " Restore previous position in file from .viminfo
   au BufReadPost * call RestoreCursorPos()
 
