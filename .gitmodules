@@ -31,8 +31,8 @@
 [submodule "bundle/vim-textobj-user"]
 	path = bundle/vim-textobj-user
 	url = git://github.com/kana/vim-textobj-user.git
-[submodule "bundle/vim-colors-solarized"]
-	path = bundle/vim-colors-solarized
+[submodule "bundle/colors-solarized"]
+	path = bundle/colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule "bundle/dbext"]
 	path = bundle/dbext
