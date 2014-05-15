@@ -1,2 +1,1 @@
-syntax clear
 setlocal spell
