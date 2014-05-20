@@ -72,6 +72,9 @@ set splitright
 nmap Q gqap
 vmap Q gq
 
+" This can apparently fix some highlighting problems... just not the ones I have
+" let g:sh_no_error=1
+
 "" 3 - Configure scripts / packages
 
 " Make this less typing
