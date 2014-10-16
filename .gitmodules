@@ -9,7 +9,7 @@
 	url = git://github.com/vim-scripts/Vim-R-plugin.git
 [submodule "bundle/LaTeX-Box"]
 	path = bundle/LaTeX-Box
-	url = git@github.com:LaTeX-Box-Team/LaTeX-Box.git
+	url = git://github.com/LaTeX-Box-Team/LaTeX-Box.git
 [submodule "bundle/vim-indent-object"]
 	path = bundle/vim-indent-object
 	url = git://github.com/michaeljsmith/vim-indent-object.git
@@ -69,13 +69,13 @@
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "bundle/UniCycle"]
 	path = bundle/UniCycle
-	url = git@github.com:davclark/UniCycle.git
+	url = git://github.com/davclark/UniCycle.git
 [submodule "bundle/vim-sensible"]
 	path = bundle/vim-sensible
 	url = git://github.com/tpope/vim-sensible.git
 [submodule "bundle/scala"]
 	path = bundle/scala
-	url = git@github.com:derekwyatt/vim-scala.git
+	url = git://github.com/derekwyatt/vim-scala.git
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = git://github.com/godlygeek/tabular.git
