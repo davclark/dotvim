@@ -7,6 +7,7 @@
 [submodule "bundle/Vim-R-plugin"]
 	path = bundle/Vim-R-plugin
 	url = git://github.com/vim-scripts/Vim-R-plugin.git
+	ignore = untracked
 [submodule "bundle/LaTeX-Box"]
 	path = bundle/LaTeX-Box
 	url = git://github.com/LaTeX-Box-Team/LaTeX-Box.git
@@ -31,12 +32,14 @@
 [submodule "bundle/vim-textobj-user"]
 	path = bundle/vim-textobj-user
 	url = git://github.com/kana/vim-textobj-user.git
+	ignore = untracked
 [submodule "bundle/colors-solarized"]
 	path = bundle/colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule "bundle/dbext"]
 	path = bundle/dbext
 	url = git://github.com/vim-scripts/dbext.vim.git
+	ignore = untracked
 [submodule "bundle/python-mode"]
 	path = bundle/python-mode
 	url = git://github.com/klen/python-mode.git
@@ -58,6 +61,7 @@
 [submodule "bundle/vim-ragtag"]
 	path = bundle/vim-ragtag
 	url = http://github.com/tpope/vim-ragtag
+	ignore = untracked
 [submodule "bundle/vim-ipython"]
 	path = bundle/vim-ipython
 	url = git://github.com/ivanov/vim-ipython.git
