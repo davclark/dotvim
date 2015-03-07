@@ -81,8 +81,10 @@ vmap Q gq
 command NT NERDTree
 
 " Syntax / style checking is generally handled by Syntastic
-" Thus, disable from pymode
-let g:pymode_lint = 0
+" This would disable pymode checking
+" let g:pymode_lint = 0
+" This disables syntastic for python
+let g:syntastic_disabled_filetypes=['py']
 
 " And these kinds of things should be done by hand (see help for inspiration,
 " though)
@@ -98,11 +100,11 @@ let g:pymode_utils_whitespaces = 0
 let g:csv_autocmd_arrange = 1
 
 " Warning signs are annoying, can still check with :Error
-let g:syntastic_quiet_warnings=1
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 
 
 " I like marking space errors - this is available for most major languages
-" These don't however seem to do anything, currently using solarized_hitrail
+" These don't however seem to do anything,
 " And for python, pyflakes does a pretty good job
 " let ruby_space_errors = 1
 " let python_space_errors = 1
@@ -111,6 +113,7 @@ let g:syntastic_quiet_warnings=1
 " For OS X, be sure to install the matching terminal theme
 " https://github.com/tomislav/osx-lion-terminal.app-colors-solarized
 
+" Special character highlighting from tpope is better than this:
 " This needs to be set before `colorscheme solarized`
 " let solarized_hitrail = 1
 
