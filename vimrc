@@ -96,6 +96,9 @@ let g:pymode_run = 0
 " And I'd rather not unintentionally create mixed diffs w/ whitespace removals
 let g:pymode_utils_whitespaces = 0
 
+" This is super-slow and blocking. Perhaps a good reason to go to NeoVim
+let g:pymode_rope_complete_on_dot = 0
+
 " This is supposedly "Highly Experimental" but really helpful (for me)
 let g:csv_autocmd_arrange = 1
 
