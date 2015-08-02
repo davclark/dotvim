@@ -140,6 +140,11 @@ let g:LatexBox_Folding=1
 map <silent> <Leader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
     \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>
 
+" xmledit (I think)
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
+let g:xml_use_html=1 " Don't complete/double up tags like <br>
+
 "" 4 - Macros, scripts, &c.
 
 " rails mode uses this, maybe other things will as well
