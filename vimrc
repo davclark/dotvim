@@ -72,6 +72,8 @@ set splitright
 nmap Q gqap
 vmap Q gq
 
+set colorcolumn=+1
+
 " This can apparently fix some highlighting problems... just not the ones I have
 " let g:sh_no_error=1
 
