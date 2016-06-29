@@ -12,11 +12,9 @@
 
 "" 1 - Pathogen
 
-" Here we temporarily disable simplenote, because it's not working very well
-" I'm switching for now to OS-based left and right quotes
-" endwise messes up umlaut-i for some reason
+" csv is a heavy plugin - should make available as an option
 " I simply haven't gotten 'round to configuring evervim
-let g:pathogen_disabled = ['simplenote', 'csv', 'UniCycle', 'evervim']
+let g:pathogen_disabled = ['csv', 'evervim']
 
 " Pathogen needs to be set up before syntax is set on
 " Just call :Helptags when you install a new file

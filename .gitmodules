@@ -1,9 +1,6 @@
 [submodule "pathogen"]
 	path = pathogen
 	url = git://github.com/tpope/vim-pathogen.git
-[submodule "bundle/simplenote"]
-	path = bundle/simplenote
-	url = git://github.com/humblehacker/simplenote.vim.git
 [submodule "bundle/Vim-R-plugin"]
 	path = bundle/Vim-R-plugin
 	url = git://github.com/vim-scripts/Vim-R-plugin.git
@@ -64,18 +61,12 @@
 	path = bundle/vim-ragtag
 	url = http://github.com/tpope/vim-ragtag
 	ignore = untracked
-[submodule "bundle/vim-ipython"]
-	path = bundle/vim-ipython
-	url = git://github.com/ivanov/vim-ipython.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = git://github.com/ervandew/supertab.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "bundle/UniCycle"]
-	path = bundle/UniCycle
-	url = git://github.com/davclark/UniCycle.git
 [submodule "bundle/vim-sensible"]
 	path = bundle/vim-sensible
 	url = git://github.com/tpope/vim-sensible.git
