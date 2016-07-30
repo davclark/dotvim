@@ -1,10 +1,6 @@
 [submodule "pathogen"]
 	path = pathogen
 	url = git://github.com/tpope/vim-pathogen.git
-[submodule "bundle/Vim-R-plugin"]
-	path = disabled-bundles/Vim-R-plugin
-	url = git://github.com/vim-scripts/Vim-R-plugin.git
-	ignore = untracked
 [submodule "bundle/LaTeX-Box"]
 	path = disabled-bundles/LaTeX-Box
 	url = git://github.com/LaTeX-Box-Team/LaTeX-Box.git
@@ -15,12 +11,6 @@
 	path = disabled-bundles/csv
 	url = git://github.com/chrisbra/csv.vim.git
     ignore = untracked
-[submodule "bundle/vim-rails"]
-	path = disabled-bundles/vim-rails
-	url = git://github.com/tpope/vim-rails.git
-[submodule "bundle/vim-ruby"]
-	path = disabled-bundles/vim-ruby
-	url = git://github.com/vim-ruby/vim-ruby.git
 [submodule "bundle/vim-endwise"]
 	path = bundle/vim-endwise
 	url = git://github.com/tpope/vim-endwise.git
@@ -28,7 +18,7 @@
 	path = disabled-bundles/vim-textobj-rubyblock
 	url = git://github.com/nelstrom/vim-textobj-rubyblock.git
 [submodule "bundle/vim-textobj-user"]
-	path = disabled-bundles/vim-textobj-user
+	path = bundle/vim-textobj-user
 	url = git://github.com/kana/vim-textobj-user.git
 	ignore = untracked
 [submodule "bundle/colors-solarized"]
@@ -48,12 +38,8 @@
 	path = disabled-bundles/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
 [submodule "bundle/vim-surround"]
-	path = disabled-bundles/vim-surround
+	path = bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
-[submodule "bundle/evervim"]
-	path = disabled-bundles/evervim
-	url = git://github.com/kakkyz81/evervim.git
-	ignore = untracked
 [submodule "bundle/tcomment_vim"]
 	path = bundle/tcomment_vim
 	url = git://github.com/tomtom/tcomment_vim.git
@@ -70,12 +56,6 @@
 [submodule "bundle/vim-sensible"]
 	path = bundle/vim-sensible
 	url = git://github.com/tpope/vim-sensible.git
-[submodule "bundle/scala"]
-	path = disabled-bundles/scala
-	url = git://github.com/derekwyatt/vim-scala.git
 [submodule "bundle/tabular"]
 	path = disabled-bundles/tabular
 	url = git://github.com/godlygeek/tabular.git
-[submodule "bundle/xmledit"]
-	path = disabled-bundles/xmledit
-	url = https://github.com/sukima/xmledit.git
