@@ -13,8 +13,8 @@
 "" 1 - Pathogen
 
 " csv is a heavy plugin - should make available as an option
-" I simply haven't gotten 'round to configuring evervim
-let g:pathogen_disabled = ['csv', 'evervim']
+" For now, it's in my disabled-bundles directory
+" let g:pathogen_disabled = ['csv']
 
 " Pathogen needs to be set up before syntax is set on
 " Just call :Helptags when you install a new file

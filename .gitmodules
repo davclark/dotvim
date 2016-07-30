@@ -2,67 +2,67 @@
 	path = pathogen
 	url = git://github.com/tpope/vim-pathogen.git
 [submodule "bundle/Vim-R-plugin"]
-	path = bundle/Vim-R-plugin
+	path = disabled-bundles/Vim-R-plugin
 	url = git://github.com/vim-scripts/Vim-R-plugin.git
 	ignore = untracked
 [submodule "bundle/LaTeX-Box"]
-	path = bundle/LaTeX-Box
+	path = disabled-bundles/LaTeX-Box
 	url = git://github.com/LaTeX-Box-Team/LaTeX-Box.git
 [submodule "bundle/vim-indent-object"]
 	path = bundle/vim-indent-object
 	url = git://github.com/michaeljsmith/vim-indent-object.git
 [submodule "bundle/csv"]
-	path = bundle/csv
+	path = disabled-bundles/csv
 	url = git://github.com/chrisbra/csv.vim.git
     ignore = untracked
 [submodule "bundle/vim-rails"]
-	path = bundle/vim-rails
+	path = disabled-bundles/vim-rails
 	url = git://github.com/tpope/vim-rails.git
 [submodule "bundle/vim-ruby"]
-	path = bundle/vim-ruby
+	path = disabled-bundles/vim-ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
 [submodule "bundle/vim-endwise"]
 	path = bundle/vim-endwise
 	url = git://github.com/tpope/vim-endwise.git
 [submodule "bundle/vim-textobj-rubyblock"]
-	path = bundle/vim-textobj-rubyblock
+	path = disabled-bundles/vim-textobj-rubyblock
 	url = git://github.com/nelstrom/vim-textobj-rubyblock.git
 [submodule "bundle/vim-textobj-user"]
-	path = bundle/vim-textobj-user
+	path = disabled-bundles/vim-textobj-user
 	url = git://github.com/kana/vim-textobj-user.git
 	ignore = untracked
 [submodule "bundle/colors-solarized"]
 	path = bundle/colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule "bundle/dbext"]
-	path = bundle/dbext
+	path = disabled-bundles/dbext
 	url = git://github.com/vim-scripts/dbext.vim.git
 	ignore = untracked
 [submodule "bundle/python-mode"]
-	path = bundle/python-mode
+	path = disabled-bundles/python-mode
 	url = git://github.com/klen/python-mode.git
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
 [submodule "bundle/vim-fugitive"]
-	path = bundle/vim-fugitive
+	path = disabled-bundles/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
 [submodule "bundle/vim-surround"]
-	path = bundle/vim-surround
+	path = disabled-bundles/vim-surround
 	url = git://github.com/tpope/vim-surround.git
 [submodule "bundle/evervim"]
-	path = bundle/evervim
+	path = disabled-bundles/evervim
 	url = git://github.com/kakkyz81/evervim.git
 	ignore = untracked
 [submodule "bundle/tcomment_vim"]
-	path = bundle/tcomment_vim
+	path = disabled-bundles/tcomment_vim
 	url = git://github.com/tomtom/tcomment_vim.git
 [submodule "bundle/vim-ragtag"]
 	path = bundle/vim-ragtag
 	url = http://github.com/tpope/vim-ragtag
 	ignore = untracked
 [submodule "bundle/supertab"]
-	path = bundle/supertab
+	path = disabled-bundles/supertab
 	url = git://github.com/ervandew/supertab.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
@@ -71,11 +71,11 @@
 	path = bundle/vim-sensible
 	url = git://github.com/tpope/vim-sensible.git
 [submodule "bundle/scala"]
-	path = bundle/scala
+	path = disabled-bundles/scala
 	url = git://github.com/derekwyatt/vim-scala.git
 [submodule "bundle/tabular"]
-	path = bundle/tabular
+	path = disabled-bundles/tabular
 	url = git://github.com/godlygeek/tabular.git
 [submodule "bundle/xmledit"]
-	path = bundle/xmledit
+	path = disabled-bundles/xmledit
 	url = https://github.com/sukima/xmledit.git
