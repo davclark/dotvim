@@ -90,6 +90,10 @@ command NT NERDTree
 " Warning signs are annoying, can still check with :Error
 let g:syntastic_quiet_messages = {'level': 'warnings'}
 
+" Need to install html5 version of tidy: `brew install tidy-html5`
+" Homebrew just calls it tidy, not tidy5
+" let g:syntastic_html_tidy_exec = 'tidy5'
+
 " This was a bunch of stuff to make pymode less aggressive
 " And these kinds of things should be done by hand (see help for inspiration,
 " though)
