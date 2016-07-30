@@ -120,11 +120,9 @@ let g:syntastic_quiet_messages = {'level': 'warnings'}
 " This needs to be set before `colorscheme solarized`
 " let solarized_hitrail = 1
 
-colorscheme solarized
 if has('gui_running')
+    colorscheme solarized
     set background=light
-else
-    set background=dark
 endif
 
 
