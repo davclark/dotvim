@@ -84,26 +84,28 @@ command NT NERDTree
 " This would disable pymode checking
 " let g:pymode_lint = 0
 " This disables syntastic for python
-let g:syntastic_disabled_filetypes=['py']
-
-" And these kinds of things should be done by hand (see help for inspiration,
-" though)
-let g:pymode_options = 0
-
-" And I'd rather use ipython
-let g:pymode_run = 0
-
-" And I'd rather not unintentionally create mixed diffs w/ whitespace removals
-let g:pymode_utils_whitespaces = 0
-
-" This is super-slow and blocking. Perhaps a good reason to go to NeoVim
-let g:pymode_rope_complete_on_dot = 0
-
-" This is supposedly "Highly Experimental" but really helpful (for me)
-let g:csv_autocmd_arrange = 1
+" I was doing this after the over-eager stuff from pymode - now removed
+" let g:syntastic_disabled_filetypes=['py']
 
 " Warning signs are annoying, can still check with :Error
 let g:syntastic_quiet_messages = {'level': 'warnings'}
+
+" This was a bunch of stuff to make pymode less aggressive
+" And these kinds of things should be done by hand (see help for inspiration,
+" though)
+" let g:pymode_options = 0
+
+" And I'd rather use ipython
+" let g:pymode_run = 0
+
+" And I'd rather not unintentionally create mixed diffs w/ whitespace removals
+" let g:pymode_utils_whitespaces = 0
+
+" This is super-slow and blocking. Perhaps a good reason to go to NeoVim
+" let g:pymode_rope_complete_on_dot = 0
+
+" This is supposedly "Highly Experimental" but really helpful (for me)
+" let g:csv_autocmd_arrange = 1
 
 
 " I like marking space errors - this is available for most major languages
