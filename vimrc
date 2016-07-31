@@ -22,6 +22,7 @@
 " Or learn more about Vundle here:
 " https://github.com/VundleVim/Vundle.vim#quick-start
 
+" These are necessary for Vundle to work, so forgive redundancy!
 set nocompatible
 filetype off
 
@@ -33,11 +34,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Other Plugin's
-
-Plugin 'altercation/vim-colors-solarized'
-
-" The colorscheme will be unavailable until completing vundle init, so we
-" set colorscheme below.
 
 Plugin 'scrooloose/nerdtree'
 
@@ -78,6 +74,15 @@ Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 
+" Color schemes will be unavailable until completing vundle init, so we set
+" colorscheme further below.
+Plugin 'altercation/vim-colors-solarized'
+" For OS X terminal, there are matching terminal theme
+" https://github.com/tomislav/osx-lion-terminal.app-colors-solarized
+Plugin 'michaelmalick/vim-colors-bluedrake'
+" The repo for bluedrake also has OS X terminal themes
+Plugin 'nice/sweater'
+
 " ARCHIVE for configuring currently unused plugins
 
 " Previous complicated stuff for LatexBox
@@ -98,12 +103,10 @@ Plugin 'tpope/vim-surround'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" solarized colorscheme now available!
-" For OS X terminal, be sure to install the matching terminal theme
-" https://github.com/tomislav/osx-lion-terminal.app-colors-solarized
+" colorschemes now available!
 
 if has('gui_running')
-    colorscheme solarized
+    colorscheme bluedrake
     set background=light
 endif
 
@@ -179,5 +182,4 @@ if !exists("autocommands_loaded")
 
   " Restore previous position in file from .viminfo
   au BufReadPost * call RestoreCursorPos()
-
 endif
