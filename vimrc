@@ -5,44 +5,65 @@
 
 "" TOC
 
-"" 1 - Enable Pathogen / import scripts
+"" 1 - Enable Vundle / declare plugins
 "" 2 - Vim Settings
 "" 3 - Configure scripts / packages
 "" 4 - Macros, commands, and things
 
-"" 1 - Pathogen
+"" 1 - Vundle
 
-" csv is a heavy plugin - should make available as an option
-" For now, it's in my disabled-bundles directory
-" let g:pathogen_disabled = ['csv']
-
-" Pathogen needs to be set up before syntax is set on
-" Just call :Helptags when you install a new file
-" call pathogen#helptags()
-""" NEED TO CHANGE THIS TO VUNDLE!
+" Learn about Vundle here: 
 " https://github.com/VundleVim/Vundle.vim#quick-start
-" call pathogen#infect()
+
+" I'm not sure how Vundle handles helptags
+" Just call :Helptags when you install a new file
+
 set nocompatible
 filetype off
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Plugin's here
+" Other Plugin's
+
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdtree'
+
+" Make this less typing
+command NT NERDTree
+
+" Mostly for NERDtree, but a general setting
+set splitright
+
+Plugin 'scrooloose/syntastic'
+Plugin 'godlygeek/tabular'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'kana/vim-textobj-user'
+
+Plugin 'JamshedVesuna/vim-markdown-preview'
+" Also `brew install grip`
+let vim_markdown_preview_github=1
+
+Plugin 'Valloric/YouCompleteMe'
+
+" Whoa tpope! Thanks!
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-surround'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
+
+" Brief help for Vungle
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
@@ -94,8 +115,6 @@ set foldlevel=5
 " Open an existing tab if the buffer is already displayed somewhere
 set switchbuf=usetab
 
-" Mostly for NERDtree
-set splitright
 
 nmap Q gqap
 vmap Q gq
@@ -107,8 +126,6 @@ set colorcolumn=+1
 
 "" 3 - Configure scripts / packages
 
-" Make this less typing
-command NT NERDTree
 
 " Syntax / style checking is generally handled by Syntastic
 " This would disable pymode checking
