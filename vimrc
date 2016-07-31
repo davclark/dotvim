@@ -67,7 +67,9 @@ Plugin 'JamshedVesuna/vim-markdown-preview'
 let vim_markdown_preview_github=1
 
 Plugin 'Valloric/YouCompleteMe'
-" Note you need to install cmake, then run install.py from the bundled dir
+" Note you need to install cmake, then run install.py from the bundled dir.
+" I also installed node with homebrew and used `--tern-completer` with
+" install.py
 
 " Whoa tpope! Thanks!
 Plugin 'tpope/vim-endwise'
