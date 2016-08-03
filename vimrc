@@ -82,6 +82,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'michaelmalick/vim-colors-bluedrake'
 " The repo for bluedrake also has OS X terminal themes
 Plugin 'nice/sweater'
+" I can't get this working right in the terminal... base16-shell seems borked
+Plugin 'chriskempson/base16-vim'
 
 " ARCHIVE for configuring currently unused plugins
 
@@ -108,6 +110,10 @@ filetype plugin indent on    " required
 if has('gui_running')
     colorscheme bluedrake
     set background=light
+else
+    " base16-shell seems not working on El Capitan for me
+    " let base16colorspace=256
+    colorscheme smyck
 endif
 
 " Put your non-Plugin stuff after this line
