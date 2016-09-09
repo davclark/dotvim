@@ -166,7 +166,7 @@ vmap Q gq
 
 set colorcolumn=+1
 
-"" 4 - Macros, scripts, &c.
+"" 3 - Macros, scripts, &c.
 
 " rails mode used this (back when I used rails mode...), maybe other things
 " will as well
@@ -189,3 +189,40 @@ if !exists("autocommands_loaded")
   " Restore previous position in file from .viminfo
   au BufReadPost * call RestoreCursorPos()
 endif
+
+noremap <silent> <Leader>w :call ToggleWrap()<CR>
+function ToggleWrap()
+  if &linebreak
+    echo "Soft wrap OFF"
+    " I actualy like 'wrap' set all the time by default
+    " setlocal nowrap
+    setlocal nolinebreak list
+    set virtualedit=all
+    silent! nunmap <buffer> <Up>
+    silent! nunmap <buffer> <Down>
+    silent! nunmap <buffer> <Home>
+    silent! nunmap <buffer> <End>
+    silent! iunmap <buffer> <Up>
+    silent! iunmap <buffer> <Down>
+    silent! iunmap <buffer> <Home>
+    silent! iunmap <buffer> <End>
+  else
+    echo "Soft wrap ON"
+    " setlocal wrap
+    setlocal linebreak nolist
+    set virtualedit=
+    setlocal display+=lastline
+    noremap  <buffer> <silent> <Up>   gk
+    noremap  <buffer> <silent> <Down> gj
+    noremap  <buffer> <silent> <Home> g<Home>
+    noremap  <buffer> <silent> <End>  g<End>
+    inoremap <buffer> <silent> <Up>   <C-o>gk
+    inoremap <buffer> <silent> <Down> <C-o>gj
+    inoremap <buffer> <silent> <Home> <C-o>g<Home>
+    inoremap <buffer> <silent> <End>  <C-o>g<End>
+    noremap  <buffer> <silent> k gk
+    noremap  <buffer> <silent> j gj
+    noremap  <buffer> <silent> 0 g0
+    noremap  <buffer> <silent> $ g$
+  endif
+endfunction
