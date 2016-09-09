@@ -198,6 +198,7 @@ function ToggleWrap()
     " setlocal nowrap
     setlocal nolinebreak list
     set virtualedit=all
+    setlocal tw=79
     silent! nunmap <buffer> <Up>
     silent! nunmap <buffer> <Down>
     silent! nunmap <buffer> <Home>
@@ -212,6 +213,7 @@ function ToggleWrap()
     setlocal linebreak nolist
     set virtualedit=
     setlocal display+=lastline
+    setlocal tw=0
     noremap  <buffer> <silent> <Up>   gk
     noremap  <buffer> <silent> <Down> gj
     noremap  <buffer> <silent> <Home> g<Home>
