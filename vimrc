@@ -166,6 +166,10 @@ vmap Q gq
 
 set colorcolumn=+1
 
+if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
+    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+endif
+
 "" 3 - Macros, scripts, &c.
 
 " rails mode used this (back when I used rails mode...), maybe other things
