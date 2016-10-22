@@ -85,6 +85,8 @@ Plugin 'nice/sweater'
 " I can't get this working right in the terminal... base16-shell seems borked
 Plugin 'chriskempson/base16-vim'
 
+Plugin 'lambdatoast/elm.vim'
+
 " ARCHIVE for configuring currently unused plugins
 
 " Previous complicated stuff for LatexBox
@@ -169,6 +171,9 @@ set colorcolumn=+1
 if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
     let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
 endif
+
+" Definitely used to have...
+set fileformats+=mac
 
 "" 3 - Macros, scripts, &c.
 
