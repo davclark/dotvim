@@ -79,24 +79,25 @@ Plugin 'tpope/vim-surround'
 Plugin 'altercation/vim-colors-solarized'
 " For OS X terminal, there are matching terminal theme
 " https://github.com/tomislav/osx-lion-terminal.app-colors-solarized
-Plugin 'michaelmalick/vim-colors-bluedrake'
+Plugin 'MichaelMalick/vim-colors-bluedrake'
 " The repo for bluedrake also has OS X terminal themes
 Plugin 'nice/sweater'
 " I can't get this working right in the terminal... base16-shell seems borked
 Plugin 'chriskempson/base16-vim'
 
-Plugin 'lambdatoast/elm.vim'
+Plugin 'elmcast/elm-vim'
+" This invokes elm-format, which currently needs to be downloaded and manually
+" installed as as binary: https://github.com/avh4/elm-format#installation-
+let g:elm_format_autosave = 1
+
+" Last I checked pangloss' version is the official rec for jsx
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
+" Current standards just use .js for React files. Ah well!
+let g:jsx_ext_required = 0
 
 " ARCHIVE for configuring currently unused plugins
-
-" Previous complicated stuff for LatexBox
-" Enable synctex in a mac-specific way
-" map <silent> <Leader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
-"     \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>
-
-" Get nice latex-box completion by default with supertab
-" Commenting out for now - you lose too much other groovy stuff
-" au FileType tex call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 
 " xmledit stuff (I think)
 " let g:xml_syntax_folding=1
@@ -172,8 +173,11 @@ if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
     let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
 endif
 
-" Definitely used to have...
+" Old mac format, ending in single character carriage-return
 set fileformats+=mac
+
+" HUD for typed commands
+set showcmd
 
 "" 3 - Macros, scripts, &c.
 
