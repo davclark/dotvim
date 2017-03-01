@@ -71,12 +71,14 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-ragtag'
-Plugin 'tpope/vim-sensible'
+if !has('nvim')
+    Plugin 'tpope/vim-sensible'
+endif
 Plugin 'tpope/vim-surround'
 
 " Color schemes will be unavailable until completing vundle init, so we set
 " colorscheme further below.
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 " For OS X terminal, there are matching terminal theme
 " https://github.com/tomislav/osx-lion-terminal.app-colors-solarized
 Plugin 'MichaelMalick/vim-colors-bluedrake'
@@ -110,14 +112,30 @@ filetype plugin indent on    " required
 
 " colorschemes now available!
 
+" Ideally, we'll figure out how to select only with GUI in neovim
+" Currently, this would get bluedrake in terminal also in neovim
+" But, it doesn't work, so it's commented for now
 if has('gui_running')
-    colorscheme bluedrake
     set background=light
+    colorscheme bluedrake
+elseif has('gui_vimr')
+    " In general, colorscheme setting doesn't work for some themes in the
+    " init.vim for neovim. Seems to
+    " work for smyck for some reason...
+    " this autocmd doesn't work! (VimEnter does, but that's pointless)
+    " autocmd GUIEnter * colorscheme smyck
+    set termguicolors
+    set title
+    colorscheme sweater
 else
-    " base16-shell seems not working on El Capitan for me
+    " base16-shell seems not working on standard macOS terminal.app
     " let base16colorspace=256
     colorscheme smyck
 endif
+
+" neovim will end up with smyck, so we need to create a callback
+" Except of course that this doesn't work!
+" autocmd GUIEnter * colorscheme smyck
 
 " Put your non-Plugin stuff after this line
 
