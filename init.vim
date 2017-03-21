@@ -58,9 +58,10 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'kana/vim-textobj-user'
 
-Plugin 'JamshedVesuna/vim-markdown-preview'
+" VimR has a nice built-in markdown preview
+" Plugin 'JamshedVesuna/vim-markdown-preview'
 " Also `brew install grip`
-let vim_markdown_preview_github=1
+" let vim_markdown_preview_github=1
 
 Plugin 'Valloric/YouCompleteMe'
 " Note you need to install cmake, then run install.py from the bundled dir.
@@ -71,10 +72,14 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-ragtag'
+" neovim is trying to be sensible by default... but note that we lose some
+" things I like from here... they are getting marbled in as I notice
+" cf. https://github.com/neovim/neovim/issues/2676
 if !has('nvim')
     Plugin 'tpope/vim-sensible'
 endif
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fireplace'
 
 " Color schemes will be unavailable until completing vundle init, so we set
 " colorscheme further below.
@@ -168,8 +173,11 @@ endif
 set ignorecase
 set smartcase
 set incsearch
-" Note - vim-sensible maps <C-L> to :noh - which turns hilights off
 set hlsearch
+" Copied from vim-sensible, as this was rejected for the neovim defaults
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
 
 " listchars is set in vim-sensible
 set list
@@ -194,8 +202,10 @@ endif
 " Old mac format, ending in single character carriage-return
 set fileformats+=mac
 
-" HUD for typed commands
+" HUD for typed commands, position (these were in sensible)
 set showcmd
+set ruler
+
 
 "" 3 - Macros, scripts, &c.
 
