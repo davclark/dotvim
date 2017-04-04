@@ -64,9 +64,13 @@ Plugin 'kana/vim-textobj-user'
 " let vim_markdown_preview_github=1
 
 Plugin 'Valloric/YouCompleteMe'
-" Note you need to install cmake, then run install.py from the bundled dir.
+" Install with Vundle or similar, or otherwise
+" note you need to install cmake, then run install.py from the bundled dir.
 " I also installed node with homebrew and used `--tern-completer` with
 " install.py
+
+" Close help after leaving insert mode (i.e., after done typing)
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " Whoa tpope! Thanks!
 Plugin 'tpope/vim-endwise'
@@ -80,6 +84,12 @@ if !has('nvim')
 endif
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fireplace'
+
+Plugin 'junegunn/rainbow_parentheses.vim'
+augroup rainbow_lisp
+  autocmd!
+  autocmd FileType lisp,clojure,scheme RainbowParentheses
+augroup END
 
 " Color schemes will be unavailable until completing vundle init, so we set
 " colorscheme further below.
