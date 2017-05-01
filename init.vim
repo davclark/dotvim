@@ -5,87 +5,90 @@
 
 "" TOC
 
-"" 1 - Enable Vundle / declare plugins
+"" 1 - Enable Plug / declare plugins
 "" 2 - Vim Settings
 "" 3 - Macros, commands, and things
 
-"" 1 - Vundle
+"" 1 - Plug
 
-" Brief help for Vungle
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-"
-" Or learn more about Vundle here:
-" https://github.com/VundleVim/Vundle.vim#quick-start
+" Look at vim-taskwarrior, vim-taskwiki
+" Also jack up Clojure support: https://juxt.pro/blog/posts/vim-1.html
+" and/or http://blog.venanti.us/clojure-vim/
+" Also airline or powerline (also does bash)
 
-" These are necessary for Vundle to work, so forgive redundancy!
-set nocompatible
-filetype off
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Make sure you use single quotes
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" Other Plugin's
-
-Plugin 'scrooloose/nerdtree'
-
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Make this less typing
 command NT NERDTree
-
 " Mostly for NERDtree, but a general setting
 set splitright
 
-Plugin 'scrooloose/syntastic'
+Plug 'godlygeek/tabular'
+Plug 'tomtom/tcomment_vim'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'sheerun/vim-polyglot'
+Plug 'kana/vim-textobj-user'
 
-" I installed the html5 version of tidy: `brew install tidy-html5`
-" Homebrew just calls it tidy, not tidy5
-" let g:syntastic_html_tidy_exec = 'tidy5'
-
-" Warning signs are annoying, can still check with :Error
-let g:syntastic_quiet_messages = {'level': 'warnings'}
-
-Plugin 'godlygeek/tabular'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'kana/vim-textobj-user'
-
-" VimR has a nice built-in markdown preview
-" Plugin 'JamshedVesuna/vim-markdown-preview'
-" Also `brew install grip`
-" let vim_markdown_preview_github=1
-
-Plugin 'Valloric/YouCompleteMe'
-" Install with Vundle or similar, or otherwise
-" note you need to install cmake, then run install.py from the bundled dir.
-" I also installed node with homebrew and used `--tern-completer` with
-" install.py
-
+Plug 'ervandew/supertab'
 " Close help after leaving insert mode (i.e., after done typing)
-let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:SuperTabClosePreviewOnPopupClose = 1
+
+if has('nvim')
+    " First, deoplete stuff
+    " I chose this over nvim-completion-manager, as it seems more supported
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    let g:deoplete#enable_at_startup = 1
+
+    " Use <TAB> for everything except utilisnips
+    autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+    let g:UltiSnipsExpandTrigger="<C-j>"
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+    Plug 'pbogut/deoplete-elm', { 'do': 'npm install -g elm-oracle' }
+    Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
+    " conda or pip install jedi
+    Plug 'zchee/deoplete-jedi'
+    Plug 'clojure-vim/async-clj-omni'
+
+    " Then, Neomake stuff
+    Plug 'neomake/neomake'
+    " Run NeoMake on read and write operations
+    autocmd! BufReadPost,BufWritePost * Neomake
+
+    let g:neomake_serialize = 1
+    let g:neomake_serialize_abort_on_error = 1
+end
+
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+" Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+" Last I checked pangloss' version is the official rec for jsx
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+
+" Current standards just use .js for React files. Ah well!
+let g:jsx_ext_required = 0
 
 " Whoa tpope! Thanks!
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-ragtag'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-ragtag'
 " neovim is trying to be sensible by default... but note that we lose some
-" things I like from here... they are getting marbled in as I notice
+" things I like from here... they are marbled in below
 " cf. https://github.com/neovim/neovim/issues/2676
 if !has('nvim')
-    Plugin 'tpope/vim-sensible'
+    Plug 'tpope/vim-sensible'
 endif
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fireplace'
 
-Plugin 'junegunn/rainbow_parentheses.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+Plug 'junegunn/rainbow_parentheses.vim'
 augroup rainbow_lisp
   autocmd!
   autocmd FileType lisp,clojure,scheme RainbowParentheses
@@ -96,49 +99,53 @@ augroup END
 " Plugin 'altercation/vim-colors-solarized'
 " For OS X terminal, there are matching terminal theme
 " https://github.com/tomislav/osx-lion-terminal.app-colors-solarized
-Plugin 'MichaelMalick/vim-colors-bluedrake'
+Plug 'MichaelMalick/vim-colors-bluedrake'
 " The repo for bluedrake also has OS X terminal themes
-Plugin 'nice/sweater'
+Plug 'nice/sweater'
 " I can't get this working right in the terminal... base16-shell seems borked
-Plugin 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 
-Plugin 'elmcast/elm-vim'
+Plug 'elmcast/elm-vim'
 " This invokes elm-format, which currently needs to be downloaded and manually
 " installed as as binary: https://github.com/avh4/elm-format#installation-
 let g:elm_format_autosave = 1
 
-" Last I checked pangloss' version is the official rec for jsx
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-
-" Current standards just use .js for React files. Ah well!
-let g:jsx_ext_required = 0
 
 " ARCHIVE for configuring currently unused plugins
+" including examples for Plug
 
-" xmledit stuff (I think)
-" let g:xml_syntax_folding=1
-" au FileType xml setlocal foldmethod=syntax
-" let g:xml_use_html=1 " Don't complete/double up tags like <br>
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" Plug 'junegunn/vim-easy-align'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" Any valid git URL is allowed
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+" Using a non-master branch
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go', { 'tag': '*' }
+
+" Plugin options
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+" Plugin outside ~/.vim/plugged with post-update hook
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Unmanaged plugin (manually installed and updated)
+" Plug '~/my-prototype-plugin'
+
+" Initialize plugin system
+call plug#end()
 
 " colorschemes now available!
 
-" Ideally, we'll figure out how to select only with GUI in neovim
-" Currently, this would get bluedrake in terminal also in neovim
-" But, it doesn't work, so it's commented for now
 if has('gui_running')
     set background=light
     colorscheme bluedrake
 elseif has('gui_vimr')
     " In general, colorscheme setting doesn't work for some themes in the
-    " init.vim for neovim. Seems to
-    " work for smyck for some reason...
-    " this autocmd doesn't work! (VimEnter does, but that's pointless)
-    " autocmd GUIEnter * colorscheme smyck
+    " init.vim for neovim. Seems to work for smyck for some reason...
     set termguicolors
     set title
     colorscheme sweater
@@ -147,10 +154,6 @@ else
     " let base16colorspace=256
     colorscheme smyck
 endif
-
-" neovim will end up with smyck, so we need to create a callback
-" Except of course that this doesn't work!
-" autocmd GUIEnter * colorscheme smyck
 
 " Put your non-Plugin stuff after this line
 
@@ -184,6 +187,7 @@ set ignorecase
 set smartcase
 set incsearch
 set hlsearch
+
 " Copied from vim-sensible, as this was rejected for the neovim defaults
 if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
@@ -205,6 +209,7 @@ vmap Q gq
 
 set colorcolumn=+1
 
+" Lifted these from an old version of sensible
 if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
     let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
 endif
