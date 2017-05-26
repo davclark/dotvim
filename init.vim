@@ -5,9 +5,13 @@
 
 "" TOC
 
+"" 0 - Basic NVim needs
 "" 1 - Enable Plug / declare plugins
 "" 2 - Vim Settings
 "" 3 - Macros, commands, and things
+
+let g:python_host_prog='C:\Python27\python'
+let g:python3_host_prog='C:\Python36\python'
 
 "" 1 - Plug
 
@@ -16,7 +20,7 @@
 " and/or http://blog.venanti.us/clojure-vim/
 " Also airline or powerline (also does bash)
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/AppData/Local/nvim/plugged')
 
 " Make sure you use single quotes
 
@@ -48,11 +52,12 @@ if has('nvim')
     let g:UltiSnipsExpandTrigger="<C-j>"
     inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-    Plug 'pbogut/deoplete-elm', { 'do': 'npm install -g elm-oracle' }
-    Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
+    " Uncomment once you're back into NPM development
+    " Plug 'pbogut/deoplete-elm', { 'do': 'npm install -g elm-oracle' }
+    " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
+    " Plug 'clojure-vim/async-clj-omni'
     " conda or pip install jedi
     Plug 'zchee/deoplete-jedi'
-    Plug 'clojure-vim/async-clj-omni'
 
     " Then, Neomake stuff
     Plug 'neomake/neomake'
@@ -86,7 +91,7 @@ if !has('nvim')
 endif
 
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 Plug 'junegunn/rainbow_parentheses.vim'
 augroup rainbow_lisp
@@ -223,10 +228,6 @@ set ruler
 
 
 "" 3 - Macros, scripts, &c.
-
-" rails mode used this (back when I used rails mode...), maybe other things
-" will as well
-command -bar -nargs=1 OpenURL :!open <args>
 
 " Elevate permission on write
 cmap w!! w !sudo tee % > /dev/null
