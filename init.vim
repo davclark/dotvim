@@ -16,7 +16,7 @@
 " and/or http://blog.venanti.us/clojure-vim/
 " Also airline or powerline (also does bash)
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " Make sure you use single quotes
 
@@ -49,10 +49,10 @@ if has('nvim')
     inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
     Plug 'pbogut/deoplete-elm', { 'do': 'npm install -g elm-oracle' }
-    Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
+    " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
     " conda or pip install jedi
     Plug 'zchee/deoplete-jedi'
-    Plug 'clojure-vim/async-clj-omni'
+    " Plug 'clojure-vim/async-clj-omni'
 
     " Then, Neomake stuff
     Plug 'neomake/neomake'
@@ -86,7 +86,7 @@ if !has('nvim')
 endif
 
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 Plug 'junegunn/rainbow_parentheses.vim'
 augroup rainbow_lisp
@@ -105,10 +105,10 @@ Plug 'nice/sweater'
 " I can't get this working right in the terminal... base16-shell seems borked
 Plug 'chriskempson/base16-vim'
 
-Plug 'elmcast/elm-vim'
+" Plug 'elmcast/elm-vim'
 " This invokes elm-format, which currently needs to be downloaded and manually
 " installed as as binary: https://github.com/avh4/elm-format#installation-
-let g:elm_format_autosave = 1
+" let g:elm_format_autosave = 1
 
 
 " ARCHIVE for configuring currently unused plugins
@@ -223,10 +223,6 @@ set ruler
 
 
 "" 3 - Macros, scripts, &c.
-
-" rails mode used this (back when I used rails mode...), maybe other things
-" will as well
-command -bar -nargs=1 OpenURL :!open <args>
 
 " Elevate permission on write
 cmap w!! w !sudo tee % > /dev/null
