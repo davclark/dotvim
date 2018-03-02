@@ -10,8 +10,16 @@
 "" 2 - Vim Settings
 "" 3 - Macros, commands, and things
 
-let g:python_host_prog='C:\Python27\python'
-let g:python3_host_prog='C:\Python36\python'
+" I'm going to experiment with leaving python2 unavailable
+let g:loaded_python_provider = 1
+" let g:python_host_prog='C:\Python27\python'
+
+" We set this exxplicitly to ensure we always have the neovim package
+if filereadable("C:\Users\davcl\Miniconda3\python")
+    let g:python3_host_prog="C:\Users\davcl\Miniconda3\python"
+elseif filereadable("C:\Python36\python")
+    let g:python3_host_prog="C:\Python36\python"
+endif
 
 "" 1 - Plug
 
@@ -24,16 +32,13 @@ call plug#begin('~/AppData/Local/nvim/plugged')
 
 " Make sure you use single quotes
 
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Make this less typing
-command NT NERDTree
-" Mostly for NERDtree, but a general setting
-set splitright
-
 Plug 'godlygeek/tabular'
-Plug 'tomtom/tcomment_vim'
+if !exists("g:gui_oni")
+    Plug 'tomtom/tcomment_vim'
+endif
+
 Plug 'michaeljsmith/vim-indent-object'
+" XXX Maybe redundant
 Plug 'sheerun/vim-polyglot'
 Plug 'kana/vim-textobj-user'
 
@@ -42,22 +47,10 @@ Plug 'ervandew/supertab'
 let g:SuperTabClosePreviewOnPopupClose = 1
 
 if has('nvim')
-    " First, deoplete stuff
-    " I chose this over nvim-completion-manager, as it seems more supported
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    let g:deoplete#enable_at_startup = 1
-
     " Use <TAB> for everything except utilisnips
     autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
     let g:UltiSnipsExpandTrigger="<C-j>"
     inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-    " Uncomment once you're back into NPM development
-    " Plug 'pbogut/deoplete-elm', { 'do': 'npm install -g elm-oracle' }
-    " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
-    " Plug 'clojure-vim/async-clj-omni'
-    " conda or pip install jedi
-    Plug 'zchee/deoplete-jedi'
 
     " Then, Neomake stuff
     Plug 'neomake/neomake'
@@ -70,19 +63,11 @@ end
 
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-" Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-" Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-" Last I checked pangloss' version is the official rec for jsx
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-
-" Current standards just use .js for React files. Ah well!
-let g:jsx_ext_required = 0
-
 " Whoa tpope! Thanks!
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-ragtag'
+"
 " neovim is trying to be sensible by default... but note that we lose some
 " things I like from here... they are marbled in below
 " cf. https://github.com/neovim/neovim/issues/2676
@@ -109,36 +94,6 @@ Plug 'MichaelMalick/vim-colors-bluedrake'
 Plug 'nice/sweater'
 " I can't get this working right in the terminal... base16-shell seems borked
 Plug 'chriskempson/base16-vim'
-
-Plug 'elmcast/elm-vim'
-" This invokes elm-format, which currently needs to be downloaded and manually
-" installed as as binary: https://github.com/avh4/elm-format#installation-
-let g:elm_format_autosave = 1
-
-
-" ARCHIVE for configuring currently unused plugins
-" including examples for Plug
-
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-" Plug 'junegunn/vim-easy-align'
-
-" Any valid git URL is allowed
-" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Using a non-master branch
-" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-" Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
-" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Unmanaged plugin (manually installed and updated)
-" Plug '~/my-prototype-plugin'
 
 " Initialize plugin system
 call plug#end()
@@ -181,11 +136,13 @@ set expandtab
 " y, d, p and co. use the system clipboard by default
 " on X11, this ends up being the "selection" buffer (i.e., selected with a
 " mouse) instead of the cut-buffer (i.e., selected with ctrl-x somewhere)
-if has('unnamedplus')
-    set clipboard=unnamedplus
-else
-    set clipboard=unnamed
-endif
+" Disabling for use inside Oni, which has it's own clipboard logic
+" neovim needs a clipboard plugin to function anyway...
+" if has('unnamedplus')
+"     set clipboard=unnamedplus
+" else
+"     set clipboard=unnamed
+" endif
 
 " Search more cool, can also make case sensitive with \c (opposite of \i)
 set ignorecase
@@ -219,10 +176,13 @@ if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
     let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
 endif
 
-" Old mac format, ending in single character carriage-return
-set fileformats+=mac
+" More suited to contemporary Windows development, we default to unix line
+" endings *always*. We still retain the old mac format, ending in single
+" character carriage-return
+set fileformats=unix,dos,mac
 
 " HUD for typed commands, position (these were in sensible)
+" XXX Don't think these do anything on Oni
 set showcmd
 set ruler
 
