@@ -224,6 +224,11 @@ set ruler
 
 "" 3 - Macros, scripts, &c.
 
+" Leave python2 unavailable
+let g:loaded_python_provider = 1
+
+let g:python3_host_prog="/usr/bin/python3"
+
 " Elevate permission on write
 cmap w!! w !sudo tee % > /dev/null
 
