@@ -38,8 +38,8 @@ if !exists("g:gui_oni")
 endif
 
 Plug 'michaeljsmith/vim-indent-object'
-" XXX Maybe redundant
-Plug 'sheerun/vim-polyglot'
+" XXX maybe useful for missing languages?
+" Plug 'sheerun/vim-polyglot'
 Plug 'kana/vim-textobj-user'
 
 Plug 'ervandew/supertab'
@@ -47,21 +47,35 @@ Plug 'ervandew/supertab'
 let g:SuperTabClosePreviewOnPopupClose = 1
 
 if has('nvim')
-    " Use <TAB> for everything except utilisnips
+    " Not using deoplete in Oni
+    " I chose this over nvim-completion-manager, as it seems more supported
+    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    " let g:deoplete#enable_at_startup = 1
+
+    " Use <TAB> for everything (except utilisnips?)
     autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-    let g:UltiSnipsExpandTrigger="<C-j>"
+    " Not using ultisnips right now
+    " let g:UltiSnipsExpandTrigger="<C-j>"
     inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-    " Then, Neomake stuff
-    Plug 'neomake/neomake'
-    " Run NeoMake on read and write operations
-    autocmd! BufReadPost,BufWritePost * Neomake
+    " Uncomment once you're back into NPM development + deoplete
+    " Plug 'pbogut/deoplete-elm', { 'do': 'npm install -g elm-oracle' }
+    " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern' }
+    " Plug 'clojure-vim/async-clj-omni'
+    " conda or pip install jedi
+    " Plug 'zchee/deoplete-jedi'
 
-    let g:neomake_serialize = 1
-    let g:neomake_serialize_abort_on_error = 1
+    " XXX also disabling neomake for now to avoid conflict with Oni
+    " Then, Neomake stuff
+    " Plug 'neomake/neomake'
+    " Run NeoMake on read and write operations
+    " autocmd! BufReadPost,BufWritePost * Neomake
+    " let g:neomake_serialize = 1
+    " let g:neomake_serialize_abort_on_error = 1
 end
 
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Not currently used
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Whoa tpope! Thanks!
 Plug 'tpope/vim-endwise'
@@ -100,15 +114,9 @@ call plug#end()
 
 " colorschemes now available!
 
-if has('gui_running')
+if exists(g:gui_oni)
     set background=light
     colorscheme bluedrake
-elseif has('gui_vimr')
-    " In general, colorscheme setting doesn't work for some themes in the
-    " init.vim for neovim. Seems to work for smyck for some reason...
-    set termguicolors
-    set title
-    colorscheme sweater
 else
     " base16-shell seems not working on standard macOS terminal.app
     " let base16colorspace=256
@@ -188,9 +196,6 @@ set ruler
 
 
 "" 3 - Macros, scripts, &c.
-
-" Elevate permission on write
-cmap w!! w !sudo tee % > /dev/null
 
 " Generally only useful when called from the autocmd below
 function! RestoreCursorPos()
