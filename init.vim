@@ -117,7 +117,7 @@ call plug#end()
 
 " colorschemes now available!
 
-if exists(g:gui_oni)
+if exists("g:gui_oni")
     set background=light
     colorscheme bluedrake
 elseif has('gui_vimr')
