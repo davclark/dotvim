@@ -154,13 +154,14 @@ set expandtab
 " y, d, p and co. use the system clipboard by default
 " on X11, this ends up being the "selection" buffer (i.e., selected with a
 " mouse) instead of the cut-buffer (i.e., selected with ctrl-x somewhere)
-" Disabling for use inside Oni, which has it's own clipboard logic
+" I had disabled for use inside Oni, which has it's own clipboard logic
 " neovim needs a clipboard plugin to function anyway...
-" if has('unnamedplus')
-"     set clipboard=unnamedplus
-" else
-"     set clipboard=unnamed
-" endif
+" but now I'm using terminal vim on Linux again
+if has('unnamedplus')
+    set clipboard=unnamedplus
+else
+    set clipboard=unnamed
+endif
 
 " Search more cool, can also make case sensitive with \c (opposite of \i)
 set ignorecase
