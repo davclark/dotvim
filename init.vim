@@ -83,6 +83,7 @@ end
 " Whoa tpope! Thanks!
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
+Plug 'idanarye/vim-merginal'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-ragtag'
 "
@@ -112,6 +113,9 @@ Plug 'MichaelMalick/vim-colors-bluedrake'
 Plug 'nice/sweater'
 " I can't get this working right in the terminal... base16-shell seems borked
 Plug 'chriskempson/base16-vim'
+
+" neovim broke sudo
+Plug 'lambdalisue/suda.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -209,7 +213,11 @@ set ruler
 "" 3 - Macros, scripts, &c.
 
 " Elevate permission on write
-cmap w!! w !sudo tee % > /dev/null
+" neovim broke sudo
+" cmap w!! w !sudo tee % > /dev/null
+" So we do this instead
+cmap w!! w suda://%
+
 
 " Generally only useful when called from the autocmd below
 function! RestoreCursorPos()
