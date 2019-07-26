@@ -33,7 +33,7 @@ call plug#begin('~/AppData/Local/nvim/plugged')
 " Make sure you use single quotes
 
 Plug 'godlygeek/tabular'
-if !exists("g:gui_oni")
+if !exists('g:gui_oni')
     Plug 'tomtom/tcomment_vim'
 endif
 
@@ -114,7 +114,7 @@ call plug#end()
 
 " colorschemes now available!
 
-if exists(g:gui_oni)
+if exists('g:gui_oni')
     set background=light
     colorscheme bluedrake
 else
