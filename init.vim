@@ -15,8 +15,8 @@ let g:loaded_python_provider = 1
 " let g:python_host_prog='C:\Python27\python'
 
 " We set this exxplicitly to ensure we always have the neovim package
-if filereadable("C:/Python36/python.exe")
-    let g:python3_host_prog="C:/Python36/python.exe"
+if filereadable("C:/Python37/python.exe")
+    let g:python3_host_prog="C:/Python37/python.exe"
 elseif filereadable("C:/Users/davcl/Miniconda3/python.exe")
     let g:python3_host_prog="C:/Users/davcl/Miniconda3/python.exe"
 endif
