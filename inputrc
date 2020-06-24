@@ -1,2 +1,6 @@
+$include /etc/inputrc
 set keymap vi
 set editing-mode vi
+set bell-style none
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
