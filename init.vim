@@ -148,7 +148,7 @@ set cmdheight=2
 set bs=2
 
 " This will wrap at 80 chars
-set tw=79
+set tw=120
 
 " Ideal for python, what else? rails mode overrides this (I think)
 set ts=4
