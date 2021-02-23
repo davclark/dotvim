@@ -10,14 +10,11 @@
 "" 2 - Vim Settings
 "" 3 - Macros, commands, and things
 
-" I'm going to experiment with leaving python2 unavailable
+" leave python2 unavailable
 let g:loaded_python_provider = 1
-" let g:python_host_prog='C:\Python27\python'
 
 " We set this exxplicitly to ensure we always have the neovim package
-if filereadable("C:/Python37/python.exe")
-    let g:python3_host_prog="C:/Python37/python.exe"
-elseif filereadable("C:/Users/davcl/Miniconda3/python.exe")
+if filereadable("C:/Users/davcl/Miniconda3/python.exe")
     let g:python3_host_prog="C:/Users/davcl/Miniconda3/python.exe"
 endif
 
@@ -31,11 +28,9 @@ endif
 call plug#begin('~/AppData/Local/nvim/plugged')
 
 " Make sure you use single quotes
-
+Plug 'Olical/conjure', {'tag': 'v4.14.1'}
 Plug 'godlygeek/tabular'
-if !exists('g:gui_oni')
-    Plug 'tomtom/tcomment_vim'
-endif
+Plug 'tomtom/tcomment_vim'
 
 Plug 'michaeljsmith/vim-indent-object'
 " XXX maybe useful for missing languages?
