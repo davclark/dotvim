@@ -155,6 +155,8 @@ set ts=4
 set sw=4
 set expandtab
 
+autocmd Filetype yaml tabstop=2 shiftwidth=2
+
 " y, d, p and co. use the system clipboard by default
 " on X11, this ends up being the "selection" buffer (i.e., selected with a
 " mouse) instead of the cut-buffer (i.e., selected with ctrl-x somewhere)
