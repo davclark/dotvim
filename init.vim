@@ -26,7 +26,6 @@ endif
 
 "" 1 - Plug
 
-" Look at vim-taskwarrior, vim-taskwiki
 " Also jack up Clojure support: https://juxt.pro/blog/posts/vim-1.html
 " and/or http://blog.venanti.us/clojure-vim/
 " Also airline or powerline (also does bash)
@@ -213,6 +212,9 @@ set fileformats=unix,dos,mac
 " XXX Don't think these do anything on Oni
 set showcmd
 set ruler
+
+set mouse=a
+set number
 
 
 "" 3 - Macros, scripts, &c.
