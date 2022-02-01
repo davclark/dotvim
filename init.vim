@@ -33,7 +33,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 " start moving to LSP?
-Plug 'neovim/nvim-lspconfig'
+" Plug 'neovim/nvim-lspconfig'
 
 " Make sure you use single quotes
 
@@ -280,7 +280,7 @@ function ToggleWrap()
   endif
 endfunction
 
-lua << EOC
-require'lspconfig'.svelte.setup{}
-require'lspconfig'.tsserver.setup{}
-EOC
+" lua << EOC
+" require'lspconfig'.svelte.setup{}
+" require'lspconfig'.tsserver.setup{}
+" EOC
