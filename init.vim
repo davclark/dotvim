@@ -182,6 +182,8 @@ if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
+tnoremap <Esc> <C-\><C-n>
+
 " listchars is set in vim-sensible
 set list
 
