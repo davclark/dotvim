@@ -144,17 +144,18 @@ endif
 "" 2 - General Vim settings
 
 " Makes more info available under your buffer
-set cmdheight=2
+" Now that neovim seems to autosize the cmd buffer, I'm thinking of reverting this change
+" set cmdheight=2
 
-" Always allow backspae
-set bs=2
+" Always allow backspace
+set backspace=2
 
-" This will wrap at 80 chars
-set tw=120
+" This will wrap at 100 chars, per current flake8 settings
+set textwidth=100
 
 " Ideal for python, what else? rails mode overrides this (I think)
-set ts=4
-set sw=4
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 autocmd Filetype yaml setlocal tabstop=2 shiftwidth=2
@@ -182,13 +183,19 @@ if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
+" Get out of terminal mode in neovim with Escape
 tnoremap <Esc> <C-\><C-n>
 
-" listchars is set in vim-sensible
+" Lifted these from an old version of sensible
+if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
+    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+endif
+
+" Actually enable listchars
 set list
 
 " I also really don't like automatic code folding - just use zM if you want
-" But if a file is huge, I do like it
+" But if a file is deeply nested, I do like it
 set foldlevel=5
 
 " Open an existing tab if the buffer is already displayed somewhere
@@ -200,22 +207,18 @@ vmap Q gq
 
 set colorcolumn=+1
 
-" Lifted these from an old version of sensible
-if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
-    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
-endif
-
 " More suited to contemporary Windows development, we default to unix line
 " endings *always*. We still retain the old mac format, ending in single
 " character carriage-return
 set fileformats=unix,dos,mac
 
-" HUD for typed commands, position (these were in sensible)
-" XXX Don't think these do anything on Oni
+" HUD for typed commands, position (these were in sensible, and are generally also already on in neovim)
 set showcmd
 set ruler
 
+" Mouse for most things, except, e.g. hit enter to continue
 set mouse=a
+" Makes pair programming much easier
 set number
 
 
