@@ -4,3 +4,8 @@ set editing-mode vi
 set bell-style none
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
+# Cursor modes from https://www.gnu.org/software/bash/manual/html_node/Readline-Init-File-Syntax.html#index-vi_002dcmd_002dmode_002dstring
+set show-mode-in-prompt on
+# Or e[5?
+set vi-ins-mode-string "\1\e[6 q\2"
+set vi-cmd-mode-string "\1\e[2 q\2"
