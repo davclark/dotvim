@@ -1,8 +1,9 @@
 local fn = vim.fn
 
 local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+local packer_bootstrap = false
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system {'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path}
+   packer_bootstrap = fn.system {'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path}
   print 'Installing packer! Close and re-open Neovim.'
   vim.cmd [[packadd packer.nvim]]
 end
@@ -14,8 +15,8 @@ if not status_ok then
 end
 
 return packer.startup(function(use)
-  -- My plugins here
   use 'wbthomason/packer.nvim'
+  use 'nvim-lua/plenary.nvim'
   use {
     'VonHeikemen/lsp-zero.nvim',
     requires = {
@@ -36,6 +37,28 @@ return packer.startup(function(use)
       {'L3MON4D3/LuaSnip'},
       {'rafamadriz/friendly-snippets'},
     }
+  }
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use {
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+      require("nvim-surround").setup({
+          -- Configuration here, or leave empty to use defaults
+      })
+    end
+  }
+
+  -- TODO still needs font setup
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+      }
+    end
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
