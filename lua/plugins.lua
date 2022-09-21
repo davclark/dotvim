@@ -17,6 +17,7 @@ end
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/plenary.nvim'
+  use 'lambdalisue/suda.vim'
   use {
     'VonHeikemen/lsp-zero.nvim',
     requires = {
