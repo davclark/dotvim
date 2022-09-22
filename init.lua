@@ -63,4 +63,7 @@ api.nvim_set_keymap('v', 'Q', 'gq', {})
 
 -- Get into normal mode in the terminal without remembering C-\,C-n
 api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
--- leader space, local is comma
+-- TODO leader space, local is comma
+
+-- Write read-only files
+api.nvim_set_keymap('c', 'w!!', 'w suda://%', {})
