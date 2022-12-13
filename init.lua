@@ -4,19 +4,24 @@ local api = vim.api
 
 require 'plugins'
 
+-- The default of auto makes diagnostic gutters "pop up" and move the whole editor
+o.signcolumn = 'yes'
+
+-- May need to check for equivalent of vimscript `if has('termguicolors')`
+if fn.has('termguicolors') then
+    o.termguicolors = true
+end
+o.background = 'dark'
+
+vim.cmd('colorscheme everforest')
+
 -- lsp-zero
 -- NOTE any mason settings must be set prior to calling the lsp-zero module!
 
 local lsp = require('lsp-zero')
 
 lsp.preset('recommended')
-lsp.configure {'lua', {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' }
-      }
-    }
-}}
+lsp.nvim_workspace()
 lsp.setup()
 
 -- Settings

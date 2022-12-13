@@ -51,6 +51,8 @@ return packer.startup(function(use)
     end
   }
 
+  use 'sainnhe/everforest'
+
   -- TODO still needs font setup
   use {
     "folke/trouble.nvim",
