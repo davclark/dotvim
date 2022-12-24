@@ -18,6 +18,8 @@ return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'lambdalisue/suda.vim'
+  -- lsp-zero has us doing setup a bit more bundled than e.g.,
+  -- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
   use {
     'VonHeikemen/lsp-zero.nvim',
     requires = {
@@ -37,10 +39,29 @@ return packer.startup(function(use)
       -- Snippets
       {'L3MON4D3/LuaSnip'},
       {'rafamadriz/friendly-snippets'},
+
+      -- Useful status updates for LSP
+      'j-hui/fidget.nvim',
+
+      -- Additional lua configuration, makes nvim config/plugin dev amazing
+      'folke/neodev.nvim',
     }
   }
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-  use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use { -- Highlight, edit, and navigate code
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      pcall(require('nvim-treesitter.install').update { with_sync = true })
+    end,
+  }
+  use { -- Additional text objects via treesitter
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter',
+  }
+
+  -- Git related plugins
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb'
+
   use {
     "kylechui/nvim-surround",
     tag = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -53,6 +74,11 @@ return packer.startup(function(use)
 
   use 'sainnhe/everforest'
 
+  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
+  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
+  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+
   -- TODO still needs font setup
   use {
     "folke/trouble.nvim",
@@ -63,6 +89,13 @@ return packer.startup(function(use)
       }
     end
   }
+
+  -- Fuzzy Finder (files, lsp, etc)
+  use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
+
+  -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
+  --   fzf recommended `set rtp+=/opt/homebrew/opt/fzf`
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
