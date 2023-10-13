@@ -1,3 +1,7 @@
 set clipboard+=unnamed
 set ideajoin
 set which-key
+set timeoutlen=5000
+
+nmap gqq :action com.andrewbrookins.idea.wrap.WrapAction<CR>
+vmap gq :action com.andrewbrookins.idea.wrap.WrapAction<CR>
