@@ -1,8 +1,16 @@
 local o = vim.o
+-- This is like vim.o, but provides a lua table interface for lists / maps
+local opt = vim.opt
 local g = vim.g
 local wo = vim.wo
 local fn = vim.fn
 local api = vim.api
+
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+g.mapleader = ' '
+g.maplocalleader = ','
 
 require 'plugins'
 
@@ -18,6 +26,9 @@ api.nvim_create_autocmd('BufWritePost', {
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
+
+-- o.runtimepath = o.runtimepath .. '/opt/homebrew/bin/fzf'
+opt.runtimepath:append '/opt/homebrew/bin/fzf'
 
 -- Set highlight on search
 o.hlsearch = false
@@ -35,7 +46,7 @@ o.undofile = true
 o.updatetime = 250
 
 -- Set completeopt to have a better completion experience
-o.completeopt = 'menuone,noselect'
+opt.completeopt = { 'menuone', 'noselect' }
 
 -- The default of auto makes diagnostic gutters "pop up" and move the whole editor
 wo.signcolumn = 'yes'
@@ -85,11 +96,7 @@ o.smartcase = true
 
 
 -- [[ Keymaps ]]
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-g.mapleader = ' '
-g.maplocalleader = ','
+-- Note that leaders are defined above requires above
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
